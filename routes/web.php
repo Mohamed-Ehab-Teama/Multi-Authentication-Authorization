@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +18,16 @@ use App\Http\Controllers\ProfileController;
 // Front Routes
 Route::prefix('front')->name('front.')->group(function () {
     Route::get('/', [FrontController::class, 'home'])->name('front.home');
+    Route::view('/login', 'front.auth.login');
+    Route::view('/register', 'front.auth.register');
+    Route::view('/forgetPassword', 'front.auth.forgetPassword');
 });
-
-
 
 
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
