@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Front Routes
+Route::prefix('front')->name('front.')->group(function () {
+    Route::get('/', [FrontController::class, 'home'])->name('front.home');
+});
+
+
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
