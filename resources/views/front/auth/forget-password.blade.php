@@ -1,14 +1,14 @@
 @extends('front.auth.master')
 
-@section('title', 'Login Page')
+@section('title', 'Forget Password Page')
 
 
 @section('content')
 
 <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner">
-            <!-- Register -->
+        <div class="authentication-inner py-4">
+            <!-- Forgot Password -->
             <div class="card">
                 <div class="card-body">
                     <!-- Logo -->
@@ -54,8 +54,7 @@
                                                 <g id="Triangle"
                                                     transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) ">
                                                     <use fill="#696cff" xlink:href="#path-5"></use>
-                                                    <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5">
-                                                    </use>
+                                                    <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5"></use>
                                                 </g>
                                             </g>
                                         </g>
@@ -66,65 +65,30 @@
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-                    <p class="mb-4">Please sign-in to your account and start the adventure</p>
+                    <h4 class="mb-2">Forgot Password? 🔒</h4>
+                    <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
 
-                    <!-- Session Status -->
-                    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-                    {{-- Login Form --}}
-                    <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="{{ route('password.email') }}" method="POST">
                         @csrf
 
-                        {{-- Email --}}
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" :value="old('email')"
-                                placeholder="Enter your email or username" autofocus />
+                            <input type="text" class="form-control" id="email" name="email"
+                                placeholder="Enter your email" autofocus :value="old('email')" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
-
-                        {{-- Password & Forget-Password --}}
-                        <div class="mb-3 form-password-toggle">
-                            <div class="d-flex justify-content-between">
-                                <label class="form-label" for="password">Password</label>
-                                <a href="{{ route('password.request') }}">
-                                    <small>Forgot Password?</small>
-                                </a>
-                            </div>
-
-                            {{-- Password --}}
-                            <div class="input-group input-group-merge">
-                                <input type="password" id="password" class="form-control" name="password"
-                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                    aria-describedby="password" />
-                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                            </div>
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                        </div>
-
-                        {{-- Remember Me --}}
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="remember-me" name="remember" />
-                                <label class="form-check-label" for="remember-me"> Remember Me </label>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-                        </div>
+                        <button type="submit" class="btn btn-primary d-grid w-100">Send Reset Link</button>
                     </form>
 
-                    <p class="text-center">
-                        <span>New on our platform?</span>
-                        <a href="{{ route('register') }}">
-                            <span>Create an account</span>
+                    <div class="text-center">
+                        <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">
+                            <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
+                            Back to login
                         </a>
-                    </p>
+                    </div>
                 </div>
             </div>
-            <!-- /Register -->
+            <!-- /Forgot Password -->
         </div>
     </div>
 </div>

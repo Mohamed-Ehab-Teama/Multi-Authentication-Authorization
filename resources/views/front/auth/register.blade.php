@@ -1,6 +1,6 @@
 @extends('front.auth.master')
 
-@section('title', 'Sign UP Page')
+@section('title', 'Registeration Page')
 
 
 @section('content')
