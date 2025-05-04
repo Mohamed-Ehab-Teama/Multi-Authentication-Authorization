@@ -82,7 +82,7 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control" id="email" name="email"
-                                placeholder="Enter your email" autofocus value="{{ old('email', $request->email) }}" />
+                                placeholder="Enter your email" autofocus value="{{ $request->email }}" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
 
