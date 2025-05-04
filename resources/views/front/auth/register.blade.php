@@ -69,6 +69,9 @@
                         <h4 class="mb-2">Adventure starts here 🚀</h4>
                         <p class="mb-4">Make your app management easy and fun!</p>
 
+                        <!-- Session Status -->
+                        <x-auth-session-status class="mb-4" :status="session('status')" />
+
                         {{-- Registration Form --}}
                         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
                             @csrf
@@ -84,9 +87,9 @@
                             {{-- Email --}}
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" :value="old('email')"
-                                    placeholder="Enter your email" />
-                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                <input type="text" class="form-control" id="email" name="email"
+                                    :value="old('email')" placeholder="Enter your email" />
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
 
                             {{-- Password --}}
