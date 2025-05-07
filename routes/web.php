@@ -26,21 +26,22 @@ Route::prefix('front')->name('front.')->group(function () {
     // Route::view('/forgetPassword', 'front.auth.forget-password')->name('forgetPassword');
 });
 
+require __DIR__ . '/auth.php';
+
+
 
 // Back Routes
 Route::prefix('back')->name('back.')->group(function () {
     Route::get('/', BackController::class)
         ->middleware('admin')
         ->name('home');
-    Route::view('/login', 'back.auth.login')->name('login');
-    Route::view('/register', 'back.auth.register')->name('register');
-    Route::view('/forgetPassword', 'back.auth.forget-password')->name('forgetPassword');
+    // Route::view('/login', 'back.auth.login')->name('login');
+    // Route::view('/register', 'back.auth.register')->name('register');
+    // Route::view('/forgetPassword', 'back.auth.forget-password')->name('forgetPassword');
+    require __DIR__ . '/adminAuth.php';
 });
 
 
-
-
-require __DIR__ . '/auth.php';
 
 
 

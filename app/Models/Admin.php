@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\AdminResetPasswordNotification;
 use App\Notifications\ResetPasswordEmailUpdate;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,11 @@ class Admin extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
+    public function sendPasswordResetNotification($token)
+    {
+        return $this->notify(new AdminResetPasswordNotification($token));
+    }
 
     /**
      * The attributes that are mass assignable.

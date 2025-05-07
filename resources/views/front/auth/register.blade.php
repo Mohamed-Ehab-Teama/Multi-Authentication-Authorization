@@ -62,7 +62,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                                <span class="app-brand-text demo text-body fw-bolder">Front</span>
                             </a>
                         </div>
                         <!-- /Logo -->

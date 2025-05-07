@@ -62,7 +62,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                                <span class="app-brand-text demo text-body fw-bolder">Back</span>
                             </a>
                         </div>
                         <!-- /Logo -->
@@ -73,7 +73,7 @@
                         <x-auth-session-status class="mb-4" :status="session('status')" />
 
                         {{-- Registration Form --}}
-                        <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="{{ route('back.register') }}" method="POST">
                             @csrf
 
                             {{-- Name --}}

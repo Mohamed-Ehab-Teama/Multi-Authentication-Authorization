@@ -61,7 +61,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                            <span class="app-brand-text demo text-body fw-bolder">Back</span>
                         </a>
                     </div>
                     <!-- /Logo -->
@@ -73,7 +73,7 @@
 
 
                     {{-- Resend Email Verification --}}
-                    <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('verification.send') }}">
+                    <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('back.verification.send') }}">
                         @csrf
 
                         <button type="submit" class="btn btn-primary d-grid w-100">Resend Verification Email</button>
@@ -82,7 +82,7 @@
 
                     
                     {{-- Logout --}}
-                    <form class="mb-3" method="POST" action="{{ route('logout') }}">
+                    <form class="mb-3" method="POST" action="{{ route('back.logout') }}">
                         @csrf
 
                         <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
