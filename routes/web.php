@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,26 +18,32 @@ use Illuminate\Support\Facades\Route;
 
 // Front Routes
 Route::prefix('front')->name('front.')->group(function () {
-    Route::get('/', [FrontController::class, 'home'])->name('home')->middleware('auth');
-    Route::view('/login', 'front.auth.login')->name('login');
-    Route::view('/register', 'front.auth.register')->name('register');
-    Route::view('/forgetPassword', 'front.auth.forgetPassword')->name('forgetPassword');
+    Route::get('/', [FrontController::class, 'home'])
+        ->name('home')
+        ->middleware('auth');
+    // Route::view('/login', 'front.auth.login')->name('login');
+    // Route::view('/register', 'front.auth.register')->name('register');
+    // Route::view('/forgetPassword', 'front.auth.forget-password')->name('forgetPassword');
 });
 
-require __DIR__.'/auth.php';
+
+// Back Routes
+Route::prefix('back')->name('back.')->group(function () {
+    Route::get('/', BackController::class)
+        ->middleware('admin')
+        ->name('home');
+    Route::view('/login', 'back.auth.login')->name('login');
+    Route::view('/register', 'back.auth.register')->name('register');
+    Route::view('/forgetPassword', 'back.auth.forget-password')->name('forgetPassword');
+});
+
+
+
+
+require __DIR__ . '/auth.php';
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
